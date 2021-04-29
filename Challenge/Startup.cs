@@ -24,6 +24,8 @@ namespace Challenge
         {
             services.AddDbContext<AccessLogContext>(opts => opts.UseSqlServer(Configuration.GetConnectionString("CodingChallengeConnection")));
             services.AddControllersWithViews();
+            services.AddSingleton<IValidateRepository, ValidateRepository>();
+
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
             {

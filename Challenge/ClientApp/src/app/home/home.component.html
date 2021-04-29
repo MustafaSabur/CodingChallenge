@@ -1,13 +1,20 @@
+<div *ngIf="enableInput; else disabled">
+    <form #f="ngForm" (ngSubmit)="onSubmit(f)" novalidate>
+        <label for="insertedAccessCode">Enter Acces Code:</label><br>
+        <input name="insertedAccessCode" [(ngModel)]="insertedAccessCode" required />
+        <button class="btn btn-primary" type="submit">Validate</button>
+        <br>
+        <label for="access_code">Range is between {{ minRange }} and {{ maxRange }}</label><br>
+    </form>
 
+    <p>{{ response }}</p>
 
+    <p>Attempts available: {{ availableAttempts }}</p>
+</div>
 
-<form #f="ngForm" (ngSubmit)="f.form.valid && onSubmit(f)">
-    <label for="fname">Enter Acces Code:</label><br>
-    <label for="fname">Range is between 0 and 9999</label><br>
-    <input type="text" [(ngModel)]="insertedAccessCode" name="password"><br>
-    <button class="btn btn-primary" type="submit">Validate</button>
-    <p>Attempts: <strong>{{ GetAvailableAttempts() }}</strong></p>
+<ng-template #disabled>
+    To many attempts...
+</ng-template>
 
-</form>
 
 
