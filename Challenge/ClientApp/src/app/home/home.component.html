@@ -1,0 +1,13 @@
+
+
+
+<form #f="ngForm" (ngSubmit)="f.form.valid && onSubmit(f)">
+    <label for="fname">Enter Acces Code:</label><br>
+    <label for="fname">Range is between 0 and 9999</label><br>
+    <input type="text" [(ngModel)]="insertedAccessCode" name="password"><br>
+    <button class="btn btn-primary" type="submit">Validate</button>
+    <p>Attempts: <strong>{{ GetAvailableAttempts() }}</strong></p>
+
+</form>
+
+
